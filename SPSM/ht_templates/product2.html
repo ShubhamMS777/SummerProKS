@@ -1,0 +1,535 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product</title>
+        <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	  	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+          <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>  -->
+
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
+<style>
+			.reg
+			{
+				position:fixed;
+				bottom:0;
+				right:50px;
+				background-color: #4CAF50;
+				border-radius: 50%;
+				padding: 20px;
+				text-align:center;
+				color:orange;
+				background-color:black;
+				border:2px solid orange;
+				margin: 4px 2px;cursor: pointer;
+				//background-image: url('https://www.gstatic.com/images/icons/material/system/1x/close_black_16dp.png');
+				//background-repeat: no-repeat;
+				//background-position:center;
+				display:none;
+
+
+			}
+			.regh:hover
+			{
+				background-color:orange;
+				color:black;
+			}
+
+
+
+			#card
+			{
+				//box-shadow:0 4px 8px 0 rgba(0,0,0,0.6);
+				box-shadow: 20px 20px 50px  grey;
+				transition:0.4s;
+				width:250px;
+				text-align:center;
+				font-size:16px;
+				font-family:sans-serif;
+				float:left;
+				margin:8px;
+
+			}
+			.tabs
+			{
+				max-width: 2000px;
+				//margin: 0 auto;
+				//padding: 0 20px;
+				//border:2px dotted green;
+				//width:100%;
+			}
+			#tab-button
+			{
+				display: table;
+				table-layout: fixed;
+				width: 100%;
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				//border:5px solid yellow;
+
+
+			}
+			#tab-button li
+			{
+				display: table-cell;
+				width: 20%;
+			}
+			#tab-button li a
+			{
+				display: block;
+				padding: .5em;
+				background: #eee;
+				border: 1px solid #ddd;
+				text-align: center;
+				color: #000;
+				text-decoration: none;
+			}
+			#tab-button li:not(:first-child) a
+			{
+				border-left: none;
+			}
+			#tab-button li a:hover
+			{
+				background-color: #ddd;
+
+			}
+			#tab-button .is-active a
+			{
+				background-color: black;
+				color:orange;
+				border-bottom:3px solid orange;
+			}
+			.tab-contents
+			{
+				//padding: .5em 6em 1em;
+				//border: 1px solid #ddd;
+				//border:2px solid green;
+			}
+
+
+
+		.tab-button-outer
+		{
+			display: none;
+			width:100%;
+		}
+		.tab-contents
+		{
+			margin-top: 20px;
+		}
+		@media screen and (min-width: 768px) {
+		.tab-button-outer {
+		position: relative;
+		z-index: 2;
+		display: block;
+		}
+		.tab-select-outer
+		{
+			display: none;
+		}
+		/*.tab-contents
+		{
+			position: relative;
+			top: -1px;
+			margin-top: 0;
+		}*/
+}
+
+
+</style>
+
+</head>
+<body>
+    {% block content %}
+       <marquee><h1> Welcome To Shagun Masala </h1></marquee>
+    <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+     <div class="navbar-header">
+
+		  <a class="navbar-brand" href="{% url 'index' %}"> Shagun Seasonings </a>
+
+	 </div>
+
+	 <ul class="nav navbar-nav navbar-right">
+	   <li><a href="{% url 'index' %}"> Home</a>  </li>
+	   <li> <a href="prod"> Product</a>  </li>
+	   <li><a href="test">About</a>  </li>
+	 </ul>
+	</div>
+   </nav>
+
+     <div  id="3"  style="min-height: 700px; background:white;overflow:auto;">
+	   <div class="tabs">
+
+       <div class="tab-button-outer">
+		<ul id="tab-button">
+			<li><a href="#tab01">Oils & Ketchups </a></li>
+			<li><a href="#tab02">Spices</a></li>
+			<li><a href="#tab03">Food Color</a></li>
+			<li><a href="#tab04">Groceries</a></li>
+
+			</ul>
+		</div>
+		<div class="tab-select-outer">
+		<center>
+		<select id="tab-select" style="background-color:black;color:orange;align:center;border:1px solid orange;width:200px;height:30px">
+			<option value="#tab01">Oils & Ketchups</option>
+			<option value="#tab02">Spices</option>
+			<option value="#tab03">Food Color</option>
+			<option value="#tab04">Groceries</option>
+
+		</select>
+		</center>
+		</div>
+<div id="tab01" class="tab-contents">
+
+
+	{% for prod in prodet %}
+
+		<div  class="img-responsive">
+		<div id='card'>
+            <p style='color:black'>{{prod.prodname}} <b>Rs.{{prod.price}}</b></p>
+			<img src='{{prod.image.url}}'  height='200' width='200'>
+		<div>
+
+			<br>
+			  <h4>{{prod.prodname}}</h4>
+
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Product Detail</button>
+
+
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Detail of {{prod.prodname}}</h4>
+        </div>
+        <div class="modal-body">
+          <p>{{prod.desc}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+		</div>
+		</div>
+		</div>
+
+		{% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+  <div id="tab02" class="tab-contents">
+      {% if prod.Spices %}
+
+	    {% for prod in prodet %}
+
+
+
+		<div  class="img-responsive">
+		<div id='card'>
+            <p style='color:black'>{{prod.prodname}} <b>Rs.{{prod.price}}</b></p>
+			<img src='{{prod.image.url}}'  height='200' width='200'>
+		<div>
+
+			<br>
+			  <h4>{{prod.prodname}}</h4>
+
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Product Detail</button>
+
+
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Detail of {{prod.prodname}}</h4>
+        </div>
+        <div class="modal-body">
+          <p>{{prod.desc}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+		</div>
+		</div>
+		</div>
+
+
+
+		{% endfor %}
+
+    {% endif %}
+
+
+
+    </div>
+
+
+  <div id="tab03" class="tab-contents">
+
+
+	{% for prod in prodet %}
+
+		<div  class="img-responsive">
+		<div id='card'>
+            <p style='color:black'>{{prod.prodname}} <b>Rs.{{prod.price}}</b></p>
+			<img src='{{prod.image.url}}'  height='200' width='200'>
+		<div>
+
+			<br>
+			  <h4>{{prod.prodname}}</h4>
+
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Product Detail</button>
+
+
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Detail of {{prod.prodname}}</h4>
+        </div>
+        <div class="modal-body">
+          <p>{{prod.desc}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+		</div>
+		</div>
+		</div>
+
+		{% endfor %}
+
+
+
+
+
+
+
+   </div>
+  <div id="tab04" class="tab-contents">
+
+
+	{% for prod in prodet %}
+
+
+		<div  class="img-responsive">
+		<div id='card'>
+            <p style='color:black'>{{prod.prodname}} <b>Rs.{{prod.price}}</b></p>
+			<img src='{{prod.image.url}}'  height='200' width='200'>
+		<div>
+
+			<br>
+			  <h4>{{prod.prodname}}</h4>
+
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Product Detail</button>
+
+
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Detail of {{prod.prodname}}</h4>
+        </div>
+        <div class="modal-body">
+          <p>{{prod.desc}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+		</div>
+		</div>
+		</div>
+
+		{% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+           </div>
+
+       </div>
+
+
+    		<script>
+		$(function() {
+  var $tabButtonItem = $('#tab-button li'),
+      $tabSelect = $('#tab-select'),
+      $tabContents = $('.tab-contents'),
+      activeClass = 'is-active';
+
+  $tabButtonItem.first().addClass(activeClass);
+  $tabContents.not(':first').hide();
+
+  $tabButtonItem.find('a').on('click', function(e) {
+    var target = $(this).attr('href');
+
+    $tabButtonItem.removeClass(activeClass);
+    $(this).parent().addClass(activeClass);
+    $tabSelect.val(target);
+    $tabContents.hide();
+    $(target).show();
+    e.preventDefault();
+  });
+
+  $tabSelect.on('change', function() {
+    var target = $(this).val(),
+        targetSelectNum = $(this).prop('selectedIndex');
+
+    $tabButtonItem.removeClass(activeClass);
+    $tabButtonItem.eq(targetSelectNum).addClass(activeClass);
+    $tabContents.hide();
+    $(target).show();
+  });
+});
+
+
+		function change(x)
+				{
+
+
+
+
+
+
+
+					if(document.getElementById(x).value=='Participate')
+					{
+						var counter=document.getElementById("count").value;
+						counter++;
+						document.getElementById("count").value=counter;
+						//alert(document.getElementById("count").value);
+						if(document.getElementById("count").value!=0)
+						{
+
+							document.getElementById("register").style.display = "block";
+							//alert("hello");
+						}
+						if(document.getElementById("count").value==0)
+						{
+							document.getElementById("register").style.display = "none";
+						}
+
+						document.getElementById(x).style.backgroundColor = "red";
+						document.getElementById(x).value='Remove';
+						//mystring=mystring+x+",";
+
+						document.getElementById('event').value+=x+" ";
+
+
+
+
+
+
+					}
+
+					else if(document.getElementById(x).value=='Remove')
+					{
+						var counter=document.getElementById("count").value;
+						counter--;
+						document.getElementById("count").value=counter;
+						//alert(document.getElementById("count").value);
+						if(document.getElementById("count").value!=0)
+						{
+
+							document.getElementById("register").style.display = "block";
+							//alert("hello");
+						}
+						if(document.getElementById("count").value==0)
+						{
+							document.getElementById("register").style.display = "none";
+						}
+
+
+						document.getElementById(x).style.backgroundColor = "green";
+						document.getElementById(x).value='Participate';
+
+						mystring=document.getElementById('event').value;
+						var res=mystring.replace(x+" ","");
+						document.getElementById('event').value=res;
+
+
+					}
+
+
+
+
+
+
+
+
+
+
+
+				}
+
+
+
+
+
+		</script>
+
+    {% endblock content %}
+
+</body>
+</html>

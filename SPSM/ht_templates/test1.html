@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test 1</title>
+
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	  	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+          <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>  -->
+
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<style>
+    body
+    {
+
+
+    opacity: 5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: 10;
+    color:red;
+    }
+
+</style>
+
+</head>
+<body >
+    {% block content %}
+    <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+     <div class="navbar-header">
+
+		  <a class="navbar-brand" href="{% url 'index' %}"> Shagun Seasonings </a>
+
+	 </div>
+
+	 <ul class="nav navbar-nav navbar-right">
+	   <li><a href="{% url 'index' %}"> Home</a>  </li>
+	   <li> <a href="prod"> Product</a>  </li>
+	   <li><a href="test"> About</a>  </li>
+	 </ul>
+	</div>
+   </nav>
+
+		<h2><center>About US<center><h2>
+<div>
+		<h4>The Office </h4>
+		<h5><b>Address:</b>Shop No 6 Shree Ganesh Mini Market,Plot No C2A,Sector 12,Kharghar,Navi Mumbai- 410210
+		<h5><b>Phone:</b> +91 98333266296</h5>
+		<h5><b>House Of Operation:<b></h5>
+		<h5>
+			 Monday	- 9:00am - 8:30 pm<br>
+			 Tuesday	- 9:00am - 8:30 pm<br>
+			 Wednesday	- 9:00am - 8:30 pm<br>
+			 Thursday	- 9:00am - 8:30 pm<br>
+			 Friday	- 9:00am - 8:30 pm<br>
+			 Saturday	- 9:00am - 8:30 pm<br>
+			 Sunday	- 9:00am - 8:30 pm<br>
+			 		</h5>
+</div>
+    {% endblock content %}
+</body>
+</html>

@@ -1,0 +1,137 @@
+
+	{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+     <title> Shagun Seasonings </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	  	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+          <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>  -->
+
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+   <!-- <script src="{% static 'js/jquery.min.js' %}"></script>
+	  <script src="{% static 'js/popper.min.js' %}"></script>
+ <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+   <script src="{% static 'js/bootstrap.min.js' %}"></script> -->
+
+
+ <style>    
+  .carousel {
+  width:640px;
+  height:360px;
+}
+.pc{font-size:86 px;}
+
+.outbor
+{
+width:300px;
+border:12px solid black;
+padding: 50px;
+margin: 20px;
+}
+
+
+.inbor
+{
+width:150px;
+border:10px solid black;
+padding: 50px;
+margin: 20px;
+}
+
+ </style>
+   </head>
+          
+   <body>
+
+   {% block content %}
+
+      <marquee><h1> Welcome To Shagun Masala </h1></marquee>
+   <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+     <div class="navbar-header">
+	   
+		  <a class="navbar-brand" href="{% url 'index' %}"> Shagun Seasonings </a>
+		
+	 </div>
+	 
+	 <ul class="nav navbar-nav navbar-right">
+	   <li><a href="{% url 'index' %}"> Home</a>  </li>
+	   <li> <a href="prod"> Product</a>  </li>
+	   <li><a href="test"> About</a>  </li>
+	 </ul>
+	</div>
+   </nav>
+        
+		 <aside class="col-md-4"> 
+		 <h1 style="font-family:Helvetica;"> Shagun Masala</h1>
+		 <p class="pc">To prepare delivery/marketing solutions for Shagun Masala located at Kharghar, Navi Mumbai Node who are a wholesale merchant business known to deal with Indian spices & groceries and prepare a full and effective business model to run for organization.
+<p>Spices/Groceries being a day to day food essential in Indian market, our team is focused to make a business software application for the organization as a marketing solution asides a application for online trading of their product with delivery conditions whenever applicable.
+<p>We beleive in to provide best quality of product to our all cutomer because customer is like god for us  </p>
+<p>The secret of happiness is variety, but the secret of variety, like the secret of all spices, is knowing when to use it.
+<p>Spice a dish with love and it pleases every palate.
+<p>	Great cooking is about being inspired by the simple things around you - fresh markets, various spices. It doesn't necessarily have to look fancy.	 </aside>
+		    <header  class="col-md-8">
+		     <div class="carousel slide" data-ride="carousel" id="c1">
+			   <ol class="carousel-indicators">
+                      <li data-target="#c1" data-slide-to="0" class="active"></li>
+					  <li data-target="#c1" data-slide-to="1"></li>
+					  <li data-target="#c1" data-slide-to="2"></li>
+			   </ol>
+			   <!-- slider -->
+			   <div class="carousel-inner">
+			     <div class="item active"> 
+			        <img src="https://content3.jdmagicbox.com/comp/navi_mumbai/q4/022pxx22.xx22.101201165000.u8q4/catalogue/shagun-masala-kharghar-navi-mumbai-dry-fruit-retailers-delb5.jpg">
+					<div class="carousel-caption">
+                             <h3>Our Spices </h3>
+					</div>
+			   </div>
+			   
+			   <div class="item"> 
+			        <img src="https://content3.jdmagicbox.com/comp/navi_mumbai/i1/022pxx22.xx22.140219145630.m2i1/catalogue/shagun-masala-navi-mumbai-ttayd.jpg">
+					<div class="carousel-caption">
+                             <h3> Our Shop In Kharghar </h3>
+					</div>
+			   </div>
+			   
+			   <div class="item"> 
+			        <img src="https://content3.jdmagicbox.com/comp/navi_mumbai/q4/022pxx22.xx22.101201165000.u8q4/catalogue/shagun-masala-kharghar-navi-mumbai-dry-fruit-retailers-fbnxl.jpg">
+					<div class="carousel-caption">
+                             <h3>Groceries</h3>
+					</div>
+			   </div>
+			   </div>
+			   <a class="left carousel-control" href="#c1" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left"></span>
+                  <span class="sr-only">Previous</span>
+               </a>
+			   
+               <a class="right carousel-control" href="#c1" data-slide="next">
+                   <span class="glyphicon glyphicon-chevron-right"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+
+			   </div>
+				
+
+			
+			   </header>
+			   
+			   
+		 
+
+		
+		
+  
+		 
+		{% endblock content %}
+		 
+		 
+  </body>
+</html>
+

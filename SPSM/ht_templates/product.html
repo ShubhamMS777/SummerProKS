@@ -1,0 +1,1149 @@
+{% load static %}
+<!DOCTYPE html
+<html>
+ <head>
+   <title>   Products  </title>
+   
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+	 <script src="{% static 'https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js' %}"></script>
+       <script src="{% static 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js' %}"></script>
+          <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>  -->
+ 
+ <link rel="stylesheet" href="{% static 'https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css' %}">
+  
+   <script src="{% static 'https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js' %}"></script>
+   
+   
+   <style>
+			.reg
+			{
+				position:fixed;
+				bottom:0;
+				right:50px;
+				background-color: #4CAF50;
+				border-radius: 50%;
+				padding: 20px;
+				text-align:center;
+				color:orange;
+				background-color:black;
+				border:2px solid orange;
+				margin: 4px 2px;cursor: pointer;
+				//background-image: url('https://www.gstatic.com/images/icons/material/system/1x/close_black_16dp.png');
+				//background-repeat: no-repeat;
+				//background-position:center;
+				display:none;
+				
+			
+			}
+			.regh:hover
+			{
+				background-color:orange;
+				color:black;
+			}
+
+
+			
+			#card
+			{
+				//box-shadow:0 4px 8px 0 rgba(0,0,0,0.6);
+				box-shadow: 20px 20px 50px  grey;
+				transition:0.4s;
+				width:250px;
+				text-align:center;
+				font-size:16px;
+				font-family:sans-serif;
+				float:left;
+				margin:8px;
+	
+			}
+			.tabs 
+			{
+				max-width: 2000px;
+				//margin: 0 auto;
+				//padding: 0 20px;
+				//border:2px dotted green;
+				//width:100%;
+			}
+			#tab-button 
+			{
+				display: table;
+				table-layout: fixed;
+				width: 100%;
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				//border:5px solid yellow;
+				
+				
+			}
+			#tab-button li 
+			{
+				display: table-cell;
+				width: 20%;
+			}
+			#tab-button li a
+			{
+				display: block;
+				padding: .5em;
+				background: #eee;
+				border: 1px solid #ddd;
+				text-align: center;
+				color: #000;
+				text-decoration: none;
+			}
+			#tab-button li:not(:first-child) a 
+			{
+				border-left: none;
+			}
+			#tab-button li a:hover
+			{
+				background-color: #ddd;
+			
+			}
+			#tab-button .is-active a 
+			{
+				background-color: black;
+				color:orange;
+				border-bottom:3px solid orange;
+			}
+			.tab-contents 
+			{
+				//padding: .5em 6em 1em;
+				//border: 1px solid #ddd;
+				//border:2px solid green;
+			}
+
+
+
+		.tab-button-outer 
+		{
+			display: none;
+			width:100%;
+		}
+		.tab-contents 
+		{
+			margin-top: 20px;
+		}
+		@media screen and (min-width: 768px) {
+		.tab-button-outer {
+		position: relative;
+		z-index: 2;
+		display: block;
+		}
+		.tab-select-outer 
+		{
+			display: none;
+		}
+		/*.tab-contents 
+		{
+			position: relative;
+			top: -1px;
+			margin-top: 0;
+		}*/
+}
+
+
+</style>
+   
+   
+   </head>
+   
+   <body>
+
+   (% block content %}
+
+
+    <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+     <div class="navbar-header">
+	   
+		  <a class="navbar-brand" href="{% url 'index' %}"> Shagun Seasonings </a>
+		
+	 </div>
+	 
+
+		 <ul class="nav navbar-nav navbar-right">
+	   <li><a href="{% url 'index' %}"> Home</a>  </li>
+	   <li> <a href="{% url 'pro' %}"> Product</a>  </li>
+	   <li><a href="{% url 'index' %}"> Feeds</a>  </li>
+
+	 </ul>
+	</div>
+   </nav>
+   
+   
+   
+ 
+  <div  id="3"  style="min-height: 700px; background:white;overflow:auto;"> 
+	   <div class="tabs">
+		<div class="tab-button-outer">
+		<ul id="tab-button">
+			<li><a href="#tab01">Oils & Ketchups </a></li>
+			<li><a href="#tab02">Spices</a></li>
+			<li><a href="#tab03">Food Color</a></li>
+			<li><a href="#tab04">Groceries</a></li>
+		
+			</ul>
+		</div>
+		<div class="tab-select-outer">
+		<center>
+		<select id="tab-select" style="background-color:black;color:orange;align:center;border:1px solid orange;width:200px;height:30px">
+			<option value="#tab01">Oils & Ketchups</option>
+			<option value="#tab02">Spices</option>
+			<option value="#tab03">Food Color</option>
+			<option value="#tab04">Groceries</option>
+		
+		</select>
+		</center>
+		</div>
+
+  <div id="tab01" class="tab-contents">
+	
+	
+		<div  class="img-responsive">
+		<div id='card'>
+			<p style='color:black'>Sunflower Oil (Rs.50)</p>
+			<img src='img/sunflower.jfif'  height='200' width='200'> 
+		<div>
+ 
+			<!-- Trigger the modal with a button -->
+			<br>
+			<p>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#counter_s" style='background-color:orange'>Rules</button>  -->
+				<input type="submit" class="btn btn-info btn-lg"  style='background-color:green' id='counter_strike' name='counter_strike' onclick="change('counter_strike',50);" value='Buy Know'>
+			</p>	
+		</div>
+		</div>
+		</div>
+	
+	
+	
+	
+	
+		
+		
+		<div  class="img-responsive">
+		<div id='card'>
+			 <p style='color:black'>Dalda (Rs.50)</p>
+			<img src='img/dalda.jfif'  height='200' width='200'> 
+		
+			<div>
+			<!-- Trigger the modal with a button -->
+			<br>
+			<p>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#fifa12" style='background-color:orange'>Rules</button>  -->
+				<input type="submit" class="btn btn-info btn-lg"  style='background-color:green' id='fifa' name='fifa' onclick="change('fifa',50);" value='Buy Know'>
+				 
+			
+				 
+			</p>	
+			
+			
+			</div>
+			
+		</div>
+		
+		</div> 
+		
+		
+		
+		
+		
+		
+		
+		<div  class="img-responsive">
+		<div id='card'>
+			<p style='color:black'>Palm Oil (Rs.150)</p>
+			<img src='img/palmoil.jfif'  height='200' width='200'> 
+		<div>
+ 
+			<!-- Trigger the modal with a button -->
+			<br>
+			<p>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#techno" style='background-color:orange'>Rules</button>  -->
+				<input type="submit" class="btn btn-info btn-lg"  style='background-color:green' id='techno_hunt' name='techno_hunt' onclick="change('techno_hunt',150);" value='Buy Know'>
+				
+			</p>	
+		</div>
+		</div>
+		</div>
+		
+		<div  class="img-responsive">
+		<div id='card'>
+			<p style='color:black'>Metro Chilli Sauce 5kg (Rs.80)</p>
+			<img src='img/mcs.jpg'  height='200' width='200'> 
+		<div>
+ 
+			<!-- Trigger the modal with a button -->
+			<br>
+			<p>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#counter_s" style='background-color:orange'>Rules</button>  -->
+				<input type="submit" class="btn btn-info btn-lg"  style='background-color:green' id='counter_strike' name='counter_strike' onclick="change('counter_strike',50);" value='Buy Know'>
+			</p>	
+		</div>
+		</div>
+		</div>
+		
+		<div  class="img-responsive">
+		<div id='card'>
+			<p style='color:black'>Winn Chilli Sauces 5kg (Rs.200)</p>
+			<img src='cs.png'  height='200' width='200'> 
+		<div>
+ 
+			<!-- Trigger the modal with a button -->
+			<br>
+			<p>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#counter_s" style='background-color:orange'>Rules</button>  -->
+				<input type="submit" class="btn btn-info btn-lg"  style='background-color:green' id='counter_strike' name='counter_strike' onclick="change('counter_strike',50);" value='Buy Know'>
+			</p>	
+		</div>
+		</div>
+		</div>
+		
+		
+		<div  class="img-responsive">
+		<div id='card'>
+			<p style='color:black'>MoonRich Chilli Sauces 5Kg(Rs.170)</p>
+			<img src='cs.png'  height='200' width='200'> 
+		<div>
+ 
+			<!-- Trigger the modal with a button -->
+			<br>
+			<p>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#counter_s" style='background-color:orange'>Rules</button>  -->
+				<input type="submit" class="btn btn-info btn-lg"  style='background-color:green' id='counter_strike' name='counter_strike' onclick="change('counter_strike',50);" value='Buy Know'>
+			</p>	
+		</div>
+		</div>
+		</div>
+		
+		
+		<div  class="img-responsive">
+		<div id='card'>
+			<p style='color:black'>MoonRich T Sauce 5Kg(Rs.190)</p>
+			<img src='cs.png'  height='200' width='200'> 
+		<div>
+ 
+			<!-- Trigger the modal with a button -->
+			<br>
+			<p>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#counter_s" style='background-color:orange'>Rules</button>  -->
+				<input type="submit" class="btn btn-info btn-lg"  style='background-color:green' id='counter_strike' name='counter_strike' onclick="change('counter_strike',50);" value='Buy Know'>
+			</p>	
+		</div>
+		</div>
+		</div>
+		
+		
+		<div  class="img-responsive">
+		<div id='card'>
+			<p style='color:black'>Winn T Sauce 5Kg(Rs.240)</p>
+			<img src='cs.png'  height='200' width='200'> 
+		<div>
+ 
+			<!-- Trigger the modal with a button -->
+			<br>
+			<p>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#counter_s" style='background-color:orange'>Rules</button>  -->
+				<input type="submit" class="btn btn-info btn-lg"  style='background-color:green' id='counter_strike' name='counter_strike' onclick="change('counter_strike',50);" value='Buy Know'>
+			</p>	
+		</div>
+		</div>
+		</div>
+		
+		
+		
+		<div  class="img-responsive">
+		<div id='card'>
+			<p style='color:black'>Winn T Ketchup 1Kg (Rs.80)</p>
+			<img src='cs.png'  height='200' width='200'> 
+		<div>
+ 
+			<!-- Trigger the modal with a button -->
+			<br>
+			<p>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#counter_s" style='background-color:orange'>Rules</button>  -->
+				<input type="submit" class="btn btn-info btn-lg"  style='background-color:green' id='counter_strike' name='counter_strike' onclick="change('counter_strike',50);" value='Buy Know'>
+			</p>	
+		</div>
+		</div>
+		</div>
+		
+		
+		<div  class="img-responsive">
+		<div id='card'>
+			<p style='color:black'>Magic T Dip Sauce 1Kg(Rs.60)</p>
+			<img src='cs.png'  height='200' width='200'> 
+		<div>
+ 
+			<!-- Trigger the modal with a button -->
+			<br>
+			<p>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#counter_s" style='background-color:orange'>Rules</button>  -->
+				<input type="submit" class="btn btn-info btn-lg"  style='background-color:green' id='counter_strike' name='counter_strike' onclick="change('counter_strike',50);" value='Buy Know'>
+			</p>	
+		</div>
+		</div>
+		</div>
+		
+		
+		<div  class="img-responsive">
+		<div id='card'>
+			<p style='color:black'>Sams Chilli Sauce Btl (Rs.35) </p>
+			<img src='cs.png'  height='200' width='200'> 
+		<div>
+ 
+			<!-- Trigger the modal with a button -->
+			<br>
+			<p>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#counter_s" style='background-color:orange'>Rules</button>  -->
+				<input type="submit" class="btn btn-info btn-lg"  style='background-color:green' id='counter_strike' name='counter_strike' onclick="change('counter_strike',50);" value='Buy Know'>
+			</p>	
+		</div>
+		</div>
+		</div>
+		
+		
+		<div  class="img-responsive">
+		<div id='card'>
+			<p style='color:black'>Sams Soya Sauce (Rs.35)</p>
+			<img src='cs.png'  height='200' width='200'> 
+		<div>
+ 
+			<!-- Trigger the modal with a button -->
+			<br>
+			<p>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#counter_s" style='background-color:orange'>Rules</button>  -->
+				<input type="submit" class="btn btn-info btn-lg"  style='background-color:green' id='counter_strike' name='counter_strike' onclick="change('counter_strike',50);" value='Buy Know'>
+			</p>	
+		</div>
+		</div>
+		</div>
+		
+		
+		<div  class="img-responsive">
+		<div id='card'>
+			<p style='color:black'>Sams Green Chilli Sauce (Rs.35)</p>
+			<img src='cs.png'  height='200' width='200'> 
+		<div>
+ 
+			<!-- Trigger the modal with a button -->
+			<br>
+			<p>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#counter_s" style='background-color:orange'>Rules</button>  -->
+				<input type="submit" class="btn btn-info btn-lg"  style='background-color:green' id='counter_strike' name='counter_strike' onclick="change('counter_strike',50);" value='Buy Know'>
+			</p>	
+		</div>
+		</div>
+		</div>
+		
+		
+		<div  class="img-responsive">
+		<div id='card'>
+			<p style='color:black'>Mayonnaise 1Kg (Rs.100)</p>
+			<img src='cs.png'  height='200' width='200'> 
+		<div>
+ 
+			<!-- Trigger the modal with a button -->
+			<br>
+			<p>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#counter_s" style='background-color:orange'>Rules</button>  -->
+				<input type="submit" class="btn btn-info btn-lg"  style='background-color:green' id='counter_strike' name='counter_strike' onclick="change('counter_strike',50);" value='Buy Know'>
+			</p>	
+		</div>
+		</div>
+		</div>
+		
+		<div  class="img-responsive">
+		<div id='card'>
+			<p style='color:black'>Chilli Sauce / Tomato Pouch (Rs.100)</p>
+			<img src='cs.png'  height='200' width='200'> 
+		<div>
+ 
+			<!-- Trigger the modal with a button -->
+			<br>
+			<p>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#counter_s" style='background-color:orange'>Rules</button>  -->
+				<input type="submit" class="btn btn-info btn-lg"  style='background-color:green' id='counter_strike' name='counter_strike' onclick="change('counter_strike',50);" value='Buy Know'>
+			</p>	
+		</div>
+		</div>
+		</div>
+		
+		
+		
+	
+		
+		
+		
+		
+		
+		
+		
+	
+		
+</div>
+
+  <div id="tab02" class="tab-contents">
+	
+	 <div  class="img-responsive">
+		<div id='card'>
+			 <p style='color:black'>Laung 1Kg(Rs.950)</p>
+			<img src='neon.jpg'  height='200' width='200'> 
+		<div>
+ 
+			<!-- Trigger the modal with a button -->
+			<br>
+			<p>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#neon_cri" style='background-color:orange'>Rules</button>  -->
+				<input type="submit" class="btn btn-info btn-lg"  style='background-color:green' id='neon' name='neon' onclick="change('neon',100);" value='Buy Know'>
+				
+			</p>	
+		</div>
+		</div>
+		</div>
+		
+		<div  class="img-responsive">
+		<div id='card'>
+			<p style='color:black'>Black Elaichi 1Kg(Rs.1400)</p>
+			<img src='mehndi.jpg'  height='200' width='200'> 
+		<div>
+ 
+			<!-- Trigger the modal with a button -->
+			<br>
+			<p>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#mehndi" style='background-color:orange'>Rules</button>  -->
+				<input type="submit" class="btn btn-info btn-lg"  style='background-color:green' id='mehndi' name='mehndi' onclick="change('mehndi',50);" value='Buy Know'>
+			</p>	
+		</div>
+		</div>
+		</div>
+	
+	
+	
+	
+	
+		
+		
+		<div  class="img-responsive">
+		<div id='card'>
+			 <p style='color:black'>Green Elaichi 1Kg(Rs.3200)</p>
+			<img src='nail.jpg'  height='200' width='200'> 
+		
+			<div>
+			<!-- Trigger the modal with a button -->
+			<br>
+			<p>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#nail_rt" style='background-color:orange'>Rules</button>  -->
+				<input type="submit" class="btn btn-info btn-lg"  style='background-color:green' id='nail_art' name='nail_art' onclick="change('nail_art',50);" value='Buy Know'>
+				 
+			
+				 
+			</p>	
+			
+			
+			</div>
+			
+		</div>
+		
+		</div> 
+		
+		
+		
+		
+		
+		
+		
+		<div  class="img-responsive">
+		<div id='card'>
+			<p style='color:black'>StarFul 1Kg(Rs.700)</p>
+			<img src='facejoker.jpg'  height='200' width='200'> 
+		<div>
+ 
+			<!-- Trigger the modal with a button -->
+			<br>
+			<p>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#face_pnt" style='background-color:orange'>Rules</button>  -->
+				<input type="submit" class="btn btn-info btn-lg"  style='background-color:green' id='face_paint' name='face_paint' onclick="change('face_paint',50);" value='Buy Know'>
+				
+			</p>	
+		</div>
+		</div>
+		</div>
+		
+		
+		<div  class="img-responsive">
+		<div id='card'>
+			<p style='color:black'>Dalchini Sada 1Kg(Rs.600)</p>
+			<img src='dslr.jpg'  height='200' width='200'> 
+		<div>
+ 
+			<!-- Trigger the modal with a button -->
+			<br>
+			<p>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#photo_gr" style='background-color:orange'>Rules</button>  -->
+				<input type="submit" class="btn btn-info btn-lg"  style='background-color:green' id='photography' name='photography' onclick="change('photography',100);" value='Buy Know'>
+				
+			</p>	
+		</div>
+		</div>
+		</div>
+		
+		<div  class="img-responsive">
+		<div id='card'>
+			<p style='color:black'>Dalchini Bungdi 1Kg(Rs.800)</p>
+			<img src='snake.jpg'  height='200' width='200'> 
+		<div>
+ 
+			<!-- Trigger the modal with a button -->
+			<br>
+			<p>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#snk_ldr" style='background-color:orange'>Rules</button>  -->
+				<input type="submit" class="btn btn-info btn-lg"  style='background-color:green' id='snake_ladder' name='snake_ladder' onclick="change('snake_ladder',40);" value='Buy Know'>
+				
+			</p>	
+		</div>
+		</div>
+		</div>
+		
+		<div  class="img-responsive">
+		<div id='card'>
+			<p style='color:black'>Javitri 1Kg(Rs.2000)</p>
+			<img src='begborrow.jpg'  height='200' width='200'> 
+		<div>
+ 
+			<!-- Trigger the modal with a button -->
+			<br>
+			<p>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#bbs" style='background-color:orange'>Rules</button>  -->
+				<input type="submit" class="btn btn-info btn-lg"  style='background-color:green' id='Big_borrow_steal' name='Big_borrow_steal' onclick="change('Big_borrow_steal',150);" value='Buy Know'>
+				
+			</p>	
+		</div>
+		</div>
+		</div>
+		
+		<div  class="img-responsive">
+		<div id='card'>
+			<p style='color:black'>Jaifal 1Kg(Rs.850)</p>
+			<img src='treasure.jpg'  height='200' width='200'> 
+		<div>
+ 
+			<!-- Trigger the modal with a button -->
+			<br>
+			<p>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#trehunt" style='background-color:orange'>Rules</button>  -->
+				<input type="submit" class="btn btn-info btn-lg"  style='background-color:green' id='treasure_hunt' name='treasure_hunt' onclick="change('treasure_hunt',200);" value='Buy Know'>
+				
+			</p>	
+		</div>
+		</div>
+		</div>
+		
+		<div  class="img-responsive">
+		<div id='card'>
+			<p style='color:black'>Jeera 1Kg(Rs.240)</p>
+			<img src='food fight.jpg'  height='200' width='200'> 
+		<div>
+ 
+			<!-- Trigger the modal with a button -->
+			<br>
+			<p>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#foodf" style='background-color:orange'>Rules</button>  -->
+				<input type="submit" class="btn btn-info btn-lg"  style='background-color:green' id='food_fight' name='food_fight' onclick="change('food_fight',100);" value='Buy Know'>
+				
+			</p>	
+		</div>
+		</div>
+		</div>
+		
+		
+		
+		<div  class="img-responsive">
+		<div id='card'>
+			<p style='color:black'>Saunf 1Kg(Rs.160)</p>
+			<img src='1minute.jpg'  height='200' width='200'> 
+		<div>
+ 
+			<!-- Trigger the modal with a button -->
+			<br>
+			<p>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#1min" style='background-color:orange'>Rules</button>  -->
+				<input type="submit" class="btn btn-info btn-lg"  style='background-color:green' id='one_minute_game' name='one_minute_game' onclick="change('one_minute_game',80);" value='Buy Know'>
+				
+			</p>	
+		</div>
+		</div>
+		</div>
+		
+		<div  class="img-responsive">
+		<div id='card'>
+			<p style='color:black'>White Till 1Kg(Rs.170)</p>
+			<img src='rangoli.jpg'  height='200' width='200'> 
+		<div>
+ 
+			<!-- Trigger the modal with a button -->
+			<br>
+			<p>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#rang" style='background-color:orange'>Rules</button>  -->
+				<input type="submit" class="btn btn-info btn-lg"  style='background-color:green' id='Rangoli' name='Rangoli' onclick="change('Rangoli',50);" value='Buy Know'>
+				
+			</p>	
+		</div>
+		</div>
+		</div>
+		
+		<div  class="img-responsive">
+		<div id='card'>
+			<p style='color:black'>Black Till 1Kg(Rs.170)</p>
+			<img src='rcmaze.jpg'  height='200' width='200'> 
+		<div>
+ 
+			<!-- Trigger the modal with a button -->
+			<br>
+			<p>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#rcm" style='background-color:orange'>Rules</button>  -->
+				<input type="submit" class="btn btn-info btn-lg"  style='background-color:green' id='rcmaze' name='rcmaze' onclick="change('rcmaze',100);" value='Buy Know'>
+				
+			</p>	
+		</div>
+		</div>
+		</div>
+		
+		
+		
+		<div  class="img-responsive">
+		<div id='card'>
+			<p style='color:black'>Ajina Moto 1Kg(Rs.120)</p>
+			<img src='lemonspoon.jpg'  height='200' width='200'> 
+		<div>
+ 
+			<!-- Trigger the modal with a button -->
+			<br>
+			<p>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#lsf" style='background-color:orange'>Rules</button>  -->
+				<input type="submit" class="btn btn-info btn-lg"  style='background-color:green' id='lemon_spoon' name='lemon_spoon' onclick="change('lemon_spoon',50);" value='Buy Know'>
+				
+			</p>	
+		</div>
+		</div>
+		</div>
+		
+		<div  class="img-responsive">
+		<div id='card'>
+			<p style='color:black'>Methi Whole 1Kg(Rs.80)</p>
+			<img src='lemonspoon.jpg'  height='200' width='200'> 
+		<div>
+ 
+			<!-- Trigger the modal with a button -->
+			<br>
+			<p>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#lsf" style='background-color:orange'>Rules</button>  -->
+				<input type="submit" class="btn btn-info btn-lg"  style='background-color:green' id='lemon_spoon' name='lemon_spoon' onclick="change('lemon_spoon',50);" value='Buy Know'>
+				
+			</p>	
+		</div>
+		</div>
+		
+		
+		
+		
+		</div><div  class="img-responsive">
+		<div id='card'>
+			<p style='color:black'>Ajwain 1Kg(Rs.240)</p>
+			<img src='lemonspoon.jpg'  height='200' width='200'> 
+		<div>
+ 
+			<!-- Trigger the modal with a button -->
+			<br>
+			<p>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#lsf" style='background-color:orange'>Rules</button>  -->
+				<input type="submit" class="btn btn-info btn-lg"  style='background-color:green' id='lemon_spoon' name='lemon_spoon' onclick="change('lemon_spoon',50);" value='Buy Know'>
+				
+			</p>	
+		</div>
+		</div>
+		</div>
+		
+		
+		
+		<div  class="img-responsive">
+		<div id='card'>
+			<p style='color:black'>Kastoori Methi 1Kg(Rs.400)</p>
+			<img src='lemonspoon.jpg'  height='200' width='200'> 
+		<div>
+ 
+			<!-- Trigger the modal with a button -->
+			<br>
+			<p>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#lsf" style='background-color:orange'>Rules</button>  -->
+				<input type="submit" class="btn btn-info btn-lg"  style='background-color:green' id='lemon_spoon' name='lemon_spoon' onclick="change('lemon_spoon',50);" value='Buy Know'>
+				
+			</p>	
+		</div>
+		</div>
+		</div>
+		
+		
+		
+  
+    </div>
+	
+	
+  <div id="tab03" class="tab-contents">
+	<div  class="img-responsive">
+		<div id='card'>
+			<p style='color:black'>Orange Red Colour (Rs.50)</p>
+			<img src='chess.jpg'  height='200' width='200'> 
+		<div>
+ 
+			<!-- Trigger the modal with a button -->
+			<br>
+			<p>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#ches" style='background-color:orange'>Rules</button>  -->
+				<input type="submit" class="btn btn-info btn-lg"  style='background-color:green' id='chess' name='chess' onclick="change('chess',50);" value='Buy Know'>
+				
+			</p>	
+		</div>
+		</div>
+		</div>
+		
+		<div  class="img-responsive">
+		<div id='card'>
+			<p style='color:black'>Lemon Yellow Color (Rs.50)</p>
+			<img src='tabletenn.jpg'  height='200' width='200'> 
+		<div>
+ 
+			<!-- Trigger the modal with a button -->
+			<br>
+			<p>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#tab_t" style='background-color:orange'>Rules</button>  -->
+				<input type="submit" class="btn btn-info btn-lg"  style='background-color:green' id='table_tennis' name='table_tennis' onclick="change('table_tennis',130);" value='Buy Know'>
+				
+			</p>	
+		</div>
+		</div>
+		</div>
+		
+		<div  class="img-responsive">
+		<div id='card'>
+			<p style='color:black'>Apple Green Color (Rs.75)</p>
+			<img src='carrom.jpg'  height='200' width='200'> 
+		<div>
+ 
+			<!-- Trigger the modal with a button -->
+			<br>
+			<p>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#crml" style='background-color:orange'>Rules</button>  -->
+				<input type="submit" class="btn btn-info btn-lg"  style='background-color:green' id='carromI' name='carromI' onclick="change('carromI',50);" value='Buy Know'>
+				
+			</p>	
+		</div>
+		</div>
+		</div>
+		
+
+		<div  class="img-responsive">
+		<div id='card'>
+			<p style='color:black'>Tomato Red Color(Rs.75)</p>
+			<img src='carrom.jpg'  height='200' width='200'> 
+		<div>
+ 
+			<!-- Trigger the modal with a button -->
+			<br>
+			<p>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#crm2" style='background-color:orange'>Rules</button>  -->
+				<input type="submit" class="btn btn-info btn-lg"  style='background-color:green' id='carromII' name='carromII' onclick="change('carromII',100);" value='Buy Know'>
+				
+			</p>	
+		</div>
+		</div>
+		</div>
+		
+		
+		<div  class="img-responsive">
+		<div id='card'>
+			<p style='color:black'>Sarwar Vinegar (Rs.25)</p>
+			<img src='football.jpg'  height='200' width='200'> 
+		<div>
+ 
+			<!-- Trigger the modal with a button -->
+			<br>
+			<p>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#rfb" style='background-color:orange'>Rules</button>  -->
+				<input type="submit" class="btn btn-info btn-lg"  style='background-color:green' id='football' name='football' onclick="change('football',300);" value='Buy Know'>
+				
+			</p>	
+		</div>
+		</div>
+		</div>
+		
+		<div  class="img-responsive">
+		<div id='card'>
+			<p style='color:black'>Sarwar Gulabjal (Rs.25)</p>
+			<img src='box crick.jpg'  height='200' width='200'> 
+		<div>
+ 
+			<!-- Trigger the modal with a button -->
+			<br>
+			<p>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#box_cri" style='background-color:orange'>Rules</button>  -->
+				<input type="submit" class="btn btn-info btn-lg"  style='background-color:green' id='box_cricket' name='box_cricket' onclick="change('box_cricket',500);" value='Buy Know'>
+				
+			</p>	
+		</div>
+		</div>
+		</div>
+		
+		<div  class="img-responsive">
+		<div id='card'>
+			<p style='color:black'>Kewrajal (Rs.25)</p>
+			<img src='volleyball.jpg'  height='200' width='200'> 
+		<div>
+ 
+			<!-- Trigger the modal with a button -->
+			<br>
+			<p>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#vb" style='background-color:orange'>Rules</button>  -->
+				<input type="submit" class="btn btn-info btn-lg"  style='background-color:green' id='volley_ball' name='volley_ball' onclick="change('volley_ball',500);" value='Buy Know'>
+				
+			</p>	
+		</div>
+		</div>
+		</div>
+		
+
+
+
+   
+   </div>
+  <div id="tab04" class="tab-contents">
+	
+	
+	
+		<div  class="img-responsive">
+		<div id='card'>
+			<p style='color:black'>Samrat Atta 25Kg (Rs.710)</p>
+			<img src='badminton.jpg'  height='200' width='200'> 
+		<div>
+ 
+			<!-- Trigger the modal with a button -->
+			<br>
+			<p>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#bad1" style='background-color:orange'>Rules</button>  -->
+				<input type="submit" class="btn btn-info btn-lg"  style='background-color:green' id='badmintonI' name='badmintonI' onclick="change('badmintonI',50);" value='Buy Know'>
+				
+			</p>	
+		</div>
+		</div>
+		</div>
+		
+		
+		<div  class="img-responsive">
+		<div id='card'>
+			<p style='color:black'>Samrat Maida 25Kg (Rs.710)</p>
+			<img src='badminton.jpg'  height='200' width='200'> 
+		<div>
+ 
+			<!-- Trigger the modal with a button -->
+			<br>
+			<p>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#bad2" style='background-color:orange'>Rules</button>  -->
+				<input type="submit" class="btn btn-info btn-lg"  style='background-color:green' id='badmintonII' name='badmintonII' onclick="change('badmintonII',100);" value='Buy Know'>
+				
+			</p>	
+		</div>
+		</div>
+		</div>
+		
+		
+		<div  class="img-responsive">
+		<div id='card'>
+			<p style='color:black'>Corn Flour 1Kg (Rs.35)</p>
+			<img src='tugofwar.jpg'  height='200' width='200'> 
+		<div>
+ 
+			<!-- Trigger the modal with a button -->
+			<br>
+			<p>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#tow" style='background-color:orange'>Rules</button>  -->
+				<input type="submit" class="btn btn-info btn-lg"  style='background-color:green' id='tug_of_war' name='tug_of_war' onclick="change('tug_of_war',200);" value='Buy Know'>
+				
+			</p>	
+		</div>
+		</div>
+		</div>
+		
+		<div  class="img-responsive">
+		<div id='card'>
+			<p style='color:black'>Samrat Chana Besan (Rs.690)</p>
+			<img src='dodgeball.jpg'  height='200' width='200'> 
+		<div>
+ 
+			<!-- Trigger the modal with a button -->
+			<br>
+			<p>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#dodge_b" style='background-color:orange'>Rules</button>  -->
+				<input type="submit" class="btn btn-info btn-lg"  style='background-color:green' id='girls_dodge_ball' name='girls_dodge_ball' onclick="change('girls_dodge_ball',300);" value='Buy Know'>
+				
+			</p>	
+		</div>
+		</div>
+		</div>
+		
+		
+		
+		<div  class="img-responsive">
+		<div id='card'>
+			<p style='color:black'>Khushi Vatana Besan (Rs.630)</p>
+			<img src='slowbike.jpg'  height='200' width='200'> 
+		<div>
+ 
+			<!-- Trigger the modal with a button -->
+			<br>
+			<p>
+				<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#slow_bik" style='background-color:orange'>Rules</button>  -->
+				<input type="submit" class="btn btn-info btn-lg"  style='background-color:green' id='slow_bike' name='slow_bike' onclick="change('slow_bike',100);" value='Buy Know'>
+				
+			</p>	
+		</div>
+		</div>
+		</div>
+	
+  
+  
+  
+  
+  
+   </div>
+  
+</div>
+	   
+	   		
+			
+			
+			
+				
+		</div>
+		<script>
+		$(function() {
+  var $tabButtonItem = $('#tab-button li'),
+      $tabSelect = $('#tab-select'),
+      $tabContents = $('.tab-contents'),
+      activeClass = 'is-active';
+
+  $tabButtonItem.first().addClass(activeClass);
+  $tabContents.not(':first').hide();
+
+  $tabButtonItem.find('a').on('click', function(e) {
+    var target = $(this).attr('href');
+
+    $tabButtonItem.removeClass(activeClass);
+    $(this).parent().addClass(activeClass);
+    $tabSelect.val(target);
+    $tabContents.hide();
+    $(target).show();
+    e.preventDefault();
+  });
+
+  $tabSelect.on('change', function() {
+    var target = $(this).val(),
+        targetSelectNum = $(this).prop('selectedIndex');
+
+    $tabButtonItem.removeClass(activeClass);
+    $tabButtonItem.eq(targetSelectNum).addClass(activeClass);
+    $tabContents.hide();
+    $(target).show();
+  });
+});
+
+
+		function change(x)
+				{
+				
+				
+					 
+					
+				
+				
+					
+					if(document.getElementById(x).value=='Participate')
+					{
+						var counter=document.getElementById("count").value;
+						counter++;
+						document.getElementById("count").value=counter;
+						//alert(document.getElementById("count").value);
+						if(document.getElementById("count").value!=0)
+						{
+						
+							document.getElementById("register").style.display = "block"; 
+							//alert("hello");
+						}
+						if(document.getElementById("count").value==0)
+						{
+							document.getElementById("register").style.display = "none"; 
+						}
+					
+						document.getElementById(x).style.backgroundColor = "red";
+						document.getElementById(x).value='Remove';
+						//mystring=mystring+x+",";
+						
+						document.getElementById('event').value+=x+" ";
+						
+						
+						
+						
+						
+						
+					}
+					
+					else if(document.getElementById(x).value=='Remove')
+					{
+						var counter=document.getElementById("count").value;
+						counter--;
+						document.getElementById("count").value=counter;
+						//alert(document.getElementById("count").value);
+						if(document.getElementById("count").value!=0)
+						{
+						
+							document.getElementById("register").style.display = "block"; 
+							//alert("hello");
+						}
+						if(document.getElementById("count").value==0)
+						{
+							document.getElementById("register").style.display = "none"; 
+						}
+					
+					
+						document.getElementById(x).style.backgroundColor = "green";
+						document.getElementById(x).value='Participate';
+						
+						mystring=document.getElementById('event').value;
+						var res=mystring.replace(x+" ","");
+						document.getElementById('event').value=res;
+						
+						
+					}
+					
+						
+					
+					
+					
+					
+					
+					
+					
+					 
+						
+				}
+				
+		
+		
+		
+		
+		</script>
+   	{% endblock content %}
+		</body>
+		  </html>
